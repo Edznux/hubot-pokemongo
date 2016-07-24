@@ -8,15 +8,28 @@
 //   none
 //
 // Commands:
-//   pogo add <lat> <long> 
-//   pogo ?
+//   pogo add <lat> <long> : Attach address to your user
+//   pogo delete <lat> <long> : Delete address from your user
+//   pogo remove <lat> <long> : Alias for delete
+//   pogo range <meters> : set detection range to <meters>m
+//   pogo debug off : disable debug
+//   pogo debug off : disable debug
+//   pogo notif on : enable notification
+//   pogo notif off : disable notification
+//   pogo timer <minutes> : set timer interval to <minutes> minute(s)
+//   pogo rm <address> : Alias for delete
+//   pogo list : list addresses from the current user
+//   pogo version : Print current version of hubot-pokemongo
+//   pogo help : Print this help
+//   pogo ? : Alias for hel
 //
 // Author:
 //   Edouard SCHWEISGUTH <edznux@gmail.com> (https://edouard.schweisguth.fr)
 //
 
 var https = require("https");
-console.log("POGO loaded")
+var DEFAULT_INTERVAL = 60*1*1000; // 1 min interval in ms
+
 function main(robot){
 
 	var hu = require("./lib/hubot_utils.js");
@@ -28,7 +41,9 @@ function main(robot){
 
 	setInterval(function(){
 		pu.alertNearby();
-	}, 60000)
+		//scan addr evry minutes
+		pu.newScan();
+	}, DEFAULT_INTERVAL)
 
 
 	robot.hear(/(?:pogo)( .*)?/i, function(res){
