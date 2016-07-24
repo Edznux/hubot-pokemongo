@@ -147,7 +147,7 @@ function main(robot){
 			res.send("Syntax error");
 			return;
 		}
-		
+
 		hu.addAddrToUser(lat, long, user, function(err, data){
 			if(err){
 				res.send(err);
