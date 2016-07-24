@@ -1,6 +1,8 @@
 # hubot-pokemongo
 
 Hubot script for pokemon go.
+hubot-pokemongo send you one private message every time one pokemon spawn near you.
+It support multiple location, mute notification, custom notification interval.
 
 ## dependency
 
@@ -11,14 +13,14 @@ Hubot script for pokemon go.
 - add <lat> <long> : Attach address to your user
 - delete <lat> <long> : Delete address from your user
 - remove <lat> <long> : Alias for delete
+- rm <address> : Alias for delete
+- list : list addresses from the current user
 - range <meters> : set detection range to <meters>m
 - debug off : disable debug
 - debug off : disable debug
 - notif on : enable notification
 - notif off : disable notification
 - timer <minutes> : set timer interval to <minutes> minute(s)
-- rm <address> : Alias for delete
-- list : list addresses from the current user
 - version : Print current version of hubot-pokemongo
 - help : Print this help
 - ? : Alias for help
@@ -60,3 +62,4 @@ external-scripts.json
 
 - [x] Refactoring
 - [ ] Tests
+- [ ] Show pokemon on map (send image)
