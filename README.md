@@ -21,6 +21,7 @@ It support multiple location, mute notification, custom notification interval.
 - notif on : enable notification
 - notif off : disable notification
 - timer <minutes> : set timer interval to <minutes> minute(s)
+- preference : Show user preferences 
 - version : Print current version of hubot-pokemongo
 - help : Print this help
 - ? : Alias for help

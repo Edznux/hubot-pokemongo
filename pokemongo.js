@@ -54,6 +54,9 @@ function main(robot){
 				case /add/.test(res.match[1]):
 					_addAddr(res);
 					break;
+				case /preferences?/.test(res.match[1]):
+					_showPreferencesByUser(res);
+					break;
 				case /range/.test(res.match[1]):
 					_addRangeToUser(res);
 					break;
@@ -102,7 +105,7 @@ function main(robot){
 				" - delete <lat> <long> : Delete address from your user",
 				" - remove <lat> <long> : Alias for delete",
 				" - range <meters> : set detection range to <meters>m",
-				" - debug off : disable debug",
+				" - debug on : enable debug",
 				" - debug off : disable debug",
 				" - notif on : enable notification",
 				" - notif off : disable notification",
@@ -246,6 +249,17 @@ function main(robot){
 		var timer = tmp[1];
 
 		hu.setTimerToUser(timer, user, function(err, data){
+			if(err){
+				res.send(err);
+			}else{
+				res.send(data);
+			}
+		});
+	}	
+	function _showPreferencesByUser(res){
+		var user = res.message.user.name.toLowerCase();
+
+		hu.showPreferencesByUser(user, function(err, data){
 			if(err){
 				res.send(err);
 			}else{
