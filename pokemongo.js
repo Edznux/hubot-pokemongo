@@ -57,6 +57,9 @@ function main(robot){
 				case /preferences?/.test(res.match[1]):
 					_showPreferencesByUser(res);
 					break;
+				case /locale/.test(res.match[1]):
+					_setLocaleToUser(res);
+					break;
 				case /range/.test(res.match[1]):
 					_addRangeToUser(res);
 					break;
@@ -113,6 +116,7 @@ function main(robot){
 				" - notif off : disable notification",
 				" - timer <minutes> : set timer interval to <minutes> minute(s)",
 				" - preference : Show user preferences",
+				" - locale <en|fr|de> : set locale for the current user",
 				" - version : Print current version of hubot-pokemongo",
 				" - help : Print this help",
 				" - ? : Alias for help"
@@ -256,7 +260,21 @@ function main(robot){
 				res.send(data);
 			}
 		});
-	}	
+	}
+	function _setLocaleToUser(res){
+		var user = res.message.user.name.toLowerCase();
+		var tmp = res.match[1].split(" ");
+		var locale = tmp[1];
+
+		hu.setLocaleToUser(locale, user, function(err, data){
+			if(err){
+				res.send(err);
+			}else{
+				res.send(data);
+			}
+		});
+	}
+
 	function _showPreferencesByUser(res){
 		var user = res.message.user.name.toLowerCase();
 
