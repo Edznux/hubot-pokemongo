@@ -16,7 +16,7 @@ It support multiple location, mute notification, custom notification interval.
 - rm <address> : Alias for delete
 - list : list addresses from the current user
 - range <meters> : set detection range to <meters>m
-- debug off : disable debug
+- debug on : enable debug
 - debug off : disable debug
 - notif on : enable notification
 - notif off : disable notification
@@ -34,8 +34,6 @@ It support multiple location, mute notification, custom notification interval.
 
 > {hubot} pogo remove 43.60385011 1.4439189
 > {hubot} pogo list
-
-
 ```
 
 ## Installation
@@ -61,5 +59,7 @@ external-scripts.json
 ## TODO
 
 - [x] Refactoring
+- [ ] Locale (User preferences)
 - [ ] Tests
 - [ ] Show pokemon on map (send image)
+- [ ] Improve range system
