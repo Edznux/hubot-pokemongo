@@ -75,6 +75,9 @@ function main(robot){
 				case /debug off/.test(res.match[1]):
 					_disableDebugToUser(res);
 					break;
+				case /id/.test(res.match[1]):
+					_getPokemonById(res);
+					break;
 				case /timer/.test(res.match[1]):
 					_setTimerToUser(res);
 					break;
@@ -284,6 +287,19 @@ function main(robot){
 			}else{
 				res.send(data);
 			}
+		});
+	}
+
+	function _getPokemonById(res){
+		var tmp = res.match[1].split(" ");
+		var id = tmp[1];
+		var user = res.message.user.name.toLowerCase();
+		hu.searchList(user, function(err,usr){
+			if(err){
+				res.send(err)
+			}
+
+			res.send(pu.getPokemonById(id, usr.locale));
 		});
 	}
 }
