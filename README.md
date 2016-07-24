@@ -27,11 +27,11 @@ Hubot script for pokemon go.
 
 ```
 > {hubot} pogo add 43.60385011 1.4439189
-> {hubot} ethereum list
+> {hubot} pogo list
   43.60385011/1.4439189
 
-> {hubot} ethereum remove 43.60385011 1.4439189
-> {hubot} ethereum list
+> {hubot} pogo remove 43.60385011 1.4439189
+> {hubot} pogo list
 
 
 ```
