@@ -1,0 +1,26 @@
+{
+  "name": "hubot-pokemongo",
+  "version": "1.0.0",
+  "description": "Hubot script for pokemon go.",
+  "main": "pokemongo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Edznux/hubot-pokemongo.git"
+  },
+  "keywords": [
+    "pokemon",
+    "hubot",
+    "script",
+    "hubot-pokemongo",
+    "pokemon go"
+  ],
+  "author": "Edouard SCHWEISGUTH <edznux@gmail.com> (https://edouard.schweiguth.fr)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Edznux/hubot-pokemongo/issues"
+  },
+  "homepage": "https://github.com/Edznux/hubot-pokemongo#readme"
+}
