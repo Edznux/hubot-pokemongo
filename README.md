@@ -1,3 +1,5 @@
+:warning: *The site we're using for Pokemon live data is blocking visits outside of browsers. Working on a fix*
+
 # hubot-pokemongo
 
 Hubot script for pokemon go.
