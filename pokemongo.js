@@ -8,20 +8,25 @@
 //   none
 //
 // Commands:
-//   pogo add <lat> <long> : Attach address to your user
-//   pogo delete <lat> <long> : Delete address from your user
-//   pogo remove <lat> <long> : Alias for delete
-//   pogo range <meters> : set detection range to <meters>m
-//   pogo debug off : disable debug
-//   pogo debug off : disable debug
-//   pogo notif on : enable notification
-//   pogo notif off : disable notification
-//   pogo timer <minutes> : set timer interval to <minutes> minute(s)
-//   pogo rm <address> : Alias for delete
-//   pogo list : list addresses from the current user
-//   pogo version : Print current version of hubot-pokemongo
-//   pogo help : Print this help
-//   pogo ? : Alias for hel
+//   pogo add <lat> <long> : Attach address to your user",
+//   pogo debug on : Enable debug",
+//   pogo debug off : Disable debug",
+//   pogo delete <lat> <long> : Delete address from your user",
+//   pogo id : Alias for number",
+//   pogo list : List addresses from the current user",
+//   pogo locale <en|fr|de> : Set locale for the current user",
+//   pogo notif on : Enable notification",
+//   pogo notif off : Disable notification",
+//   pogo number : Search for a Pokémon using it's Pokédex number",
+//   pogo nb : Alias for number",
+//   pogo preference : Show user preferences",
+//   pogo range <meters> : Set detection range to <meters>m",
+//   pogo remove <lat> <long> : Alias for delete",
+//   pogo rm <address> : Alias for delete",
+//   pogo timer <minutes> : Set timer interval to <minutes> minute(s)",
+//   pogo version : Print current version of hubot-pokemongo",
+//   pogo help : Print this help",
+//   pogo ? : Alias for help"
 //
 // Author:
 //   Edouard SCHWEISGUTH <edznux@gmail.com> (https://edouard.schweisguth.fr)
@@ -47,17 +52,17 @@ function main(robot){
 
 
 	robot.hear(/(?:pogo)( .*)?/i, function(res){
-		if(res.message.rawText.match(/^(?:pogo|eth)/i)){
+		if(res.message.rawText.match(/^(?:pogo)/i)){
 
 			res.match[1] = res.match[1].trim();
 			switch(true){
 				case /add/.test(res.match[1]):
 					_addAddr(res);
 					break;
-				case /preferences?/.test(res.match[1]):
+				case /preferences?\b/.test(res.match[1]):
 					_showPreferencesByUser(res);
 					break;
-				case /locale/.test(res.match[1]):
+				case /locales?\b/.test(res.match[1]):
 					_setLocaleToUser(res);
 					break;
 				case /range/.test(res.match[1]):
@@ -76,6 +81,12 @@ function main(robot){
 					_disableDebugToUser(res);
 					break;
 				case /id/.test(res.match[1]):
+					_getPokemonById(res);
+					break;
+				case /nb/.test(res.match[1]):
+					_getPokemonById(res);
+					break;
+				case /number/.test(res.match[1]):
 					_getPokemonById(res);
 					break;
 				case /timer/.test(res.match[1]):
@@ -108,18 +119,21 @@ function main(robot){
 		return [
 			"pogo commands",
 				" - add <lat> <long> : Attach address to your user",
+				" - debug on : Enable debug",
+				" - debug off : Disable debug",
 				" - delete <lat> <long> : Delete address from your user",
+				" - id : Alias for number",
+				" - list : List addresses from the current user",
+				" - locale <en|fr|de> : Set locale for the current user",
+				" - notif on : Enable notification",
+				" - notif off : Disable notification",
+				" - number : Search for a Pokémon using it's Pokédex number",
+				" - nb : Alias for number",
+				" - preference : Show user preferences",
+				" - range <meters> : Set detection range to <meters>m",
 				" - remove <lat> <long> : Alias for delete",
 				" - rm <address> : Alias for delete",
-				" - list : list addresses from the current user",
-				" - range <meters> : set detection range to <meters>m",
-				" - debug on : enable debug",
-				" - debug off : disable debug",
-				" - notif on : enable notification",
-				" - notif off : disable notification",
-				" - timer <minutes> : set timer interval to <minutes> minute(s)",
-				" - preference : Show user preferences",
-				" - locale <en|fr|de> : set locale for the current user",
+				" - timer <minutes> : Set timer interval to <minutes> minute(s)",
 				" - version : Print current version of hubot-pokemongo",
 				" - help : Print this help",
 				" - ? : Alias for help"
@@ -298,10 +312,10 @@ function main(robot){
 			if(err){
 				res.send(err)
 			}
-
-			res.send(pu.getPokemonById(id, usr.locale));
+			res.send(pu.getPokemonById(id, usr.locale) + "\nhttp://pokeapi.co/media/sprites/pokemon/" + id + ".png");
 		});
 	}
+	
 }
 
 module.exports = main;
