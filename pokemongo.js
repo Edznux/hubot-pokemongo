@@ -312,7 +312,11 @@ function main(robot){
 			if(err){
 				res.send(err)
 			}
-			res.send(pu.getPokemonById(id, usr.locale) + "\nhttp://pokeapi.co/media/sprites/pokemon/" + id + ".png");
+			var pokename = pu.getPokemonById(id, usr.locale);
+			if(pokename)
+				res.send(pokename + "\nhttp://pokeapi.co/media/sprites/pokemon/" + id + ".png");
+			else
+				res.send(id + " can't be found! The Pokédex goes from #1 to #721.")
 		});
 	}
 	
