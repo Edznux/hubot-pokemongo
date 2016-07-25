@@ -313,10 +313,11 @@ function main(robot){
 				res.send(err)
 			}
 			var pokename = pu.getPokemonById(id, usr.locale);
-			if(pokename)
+			if(pokename){
 				res.send(pokename + "\nhttp://pokeapi.co/media/sprites/pokemon/" + id + ".png");
-			else
-				res.send(id + " can't be found! The Pokédex goes from #1 to #721.")
+			}else{
+				res.send(id + " can't be found! The Pokédex goes from #1 to #721.");
+			}
 		});
 	}
 	
