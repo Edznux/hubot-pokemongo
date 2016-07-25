@@ -7,6 +7,7 @@ It support multiple location, mute notification, custom notification interval.
 ## dependency
 
 - hubot-redis-brain
+- geolib
 
 ## Commands available
 
@@ -53,14 +54,13 @@ external-scripts.json
   "hubot-pokemongo"
   //....
 ]
-
 ```
 
 
 ## TODO
 
 - [x] Refactoring
-- [ ] Locale (User preferences)
+- [x] Locale (User preferences)
 - [ ] Tests
 - [ ] Show pokemon on map (send image)
-- [ ] Improve range system
+- [x] Improve range system
