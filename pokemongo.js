@@ -8,25 +8,25 @@
 //   none
 //
 // Commands:
-// add <lat> <long> : Attach address to your user",
-// debug on : Enable debug",
-// debug off : Disable debug",
-// delete <lat> <long> : Delete address from your user",
-// id : Alias for number",
-// list : List addresses from the current user",
-// locale <en|fr|de> : Set locale for the current user",
-// notif on : Enable notification",
-// notif off : Disable notification",
-// number : Search for a Pokémon using it's Pokédex number",
-// nb : Alias for number",
-// preference : Show user preferences",
-// range <meters> : Set detection range to <meters>m",
-// remove <lat> <long> : Alias for delete",
-// rm <address> : Alias for delete",
-// timer <minutes> : Set timer interval to <minutes> minute(s)",
-// version : Print current version of hubot-pokemongo",
-// help : Print this help",
-// ? : Alias for help"
+//   pogo add <lat> <long> : Attach address to your user",
+//   pogo debug on : Enable debug",
+//   pogo debug off : Disable debug",
+//   pogo delete <lat> <long> : Delete address from your user",
+//   pogo id : Alias for number",
+//   pogo list : List addresses from the current user",
+//   pogo locale <en|fr|de> : Set locale for the current user",
+//   pogo notif on : Enable notification",
+//   pogo notif off : Disable notification",
+//   pogo number : Search for a Pokémon using it's Pokédex number",
+//   pogo nb : Alias for number",
+//   pogo preference : Show user preferences",
+//   pogo range <meters> : Set detection range to <meters>m",
+//   pogo remove <lat> <long> : Alias for delete",
+//   pogo rm <address> : Alias for delete",
+//   pogo timer <minutes> : Set timer interval to <minutes> minute(s)",
+//   pogo version : Print current version of hubot-pokemongo",
+//   pogo help : Print this help",
+//   pogo ? : Alias for help"
 //
 // Author:
 //   Edouard SCHWEISGUTH <edznux@gmail.com> (https://edouard.schweisguth.fr)
