@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Edznux/hubot-pokemongo/issues"
   },
-  "homepage": "https://github.com/Edznux/hubot-pokemongo#readme"
+  "homepage": "https://github.com/Edznux/hubot-pokemongo#readme",
+  "dependencies": {
+    "geolib": "^2.0.21"
+  }
 }
