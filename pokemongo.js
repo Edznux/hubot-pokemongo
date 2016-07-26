@@ -97,7 +97,8 @@ function main(robot){
 				case /(rm)|(delete)|(remove)/.test(res.match[1]):
 					_deleteAddr(res);
 					break;
-				case /(search)|(s)/.test(res.match[1]):
+				case res.match[1] == "search":
+				case res.match[1] == "s":
 					_searchOnPokemonWiki(res);
 					break;
 				case res.match[1] == "list":
@@ -343,7 +344,7 @@ function main(robot){
 	//Using wikis from Encyclopaediae Pokemonis http://www.encyclopaediae-pokemonis.org/
 	function _searchOnPokemonWiki(res){
 		var tmp = res.match[1].split(/(^pogo search )|(^pogo s )/);
-		var query = encodeURIComponent(tmp[0].trim());
+		var query = encodeURIComponent(tmp[0].split(" ")[1].trim());
 		var user = res.message.user.name.toLowerCase();
 		hu.searchList(user, function(err,usr){
 			if(err){
