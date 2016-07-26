@@ -8,27 +8,27 @@
 //   none
 //
 // Commands:
-//   pogo add <lat> <long> : Attach address to your user",
-//   pogo debug on : Enable debug",
-//   pogo debug off : Disable debug",
-//   pogo delete <lat> <long> : Delete address from your user",
-//   pogo list : List addresses from the current user",
-//   pogo locale <en|fr|de> : Set locale for the current user",
-//   pogo notif on : Enable notification",
-//   pogo notif off : Disable notification",
-//   pogo number <number> : Search for a Pokémon using it's Pokédex number",
-//   pogo nb <number> : Alias for number",
-//   pogo id <number> : Alias for number",
-//   pogo preference : Show user preferences",
-//   pogo range <meters> : Set detection range to <meters>m",
-//   pogo remove <lat> <long> : Alias for delete",
-//   pogo rm <address> : Alias for delete",
-//   pogo search <query> : Searches on a Pokémon Wiki (depending on your locale)",
-//   pogo s <query> : Alias for search",
-//   pogo timer <minutes> : Set timer interval to <minutes> minute(s)",
-//   pogo version : Print current version of hubot-pokemongo",
-//   pogo help : Print this help",
-//   pogo ? : Alias for help"
+//   pogo add <lat> <long> : Attach address to your user,
+//   pogo debug on : Enable debug,
+//   pogo debug off : Disable debug,
+//   pogo delete <lat> <long> : Delete address from your user,
+//   pogo list : List addresses from the current user,
+//   pogo locale <en|fr|de> : Set locale for the current user,
+//   pogo notif on : Enable notification,
+//   pogo notif off : Disable notification,
+//   pogo number <number> : Search for a Pokémon using it's Pokédex number,
+//   pogo nb <number> : Alias for number,
+//   pogo id <number> : Alias for number,
+//   pogo preference : Show user preferences,
+//   pogo range <meters> : Set detection range to <meters>m,
+//   pogo remove <lat> <long> : Alias for delete,
+//   pogo rm <address> : Alias for delete,
+//   pogo search <query> : Searches on a Pokémon Wiki (depending on your locale),
+//   pogo s <query> : Alias for search,
+//   pogo timer <minutes> : Set timer interval to <minutes> minute(s),
+//   pogo version : Print current version of hubot-pokemongo,
+//   pogo help : Print this help,
+//   pogo ? : Alias for help
 //
 // Author:
 //   Edouard SCHWEISGUTH <edznux@gmail.com> (https://edouard.schweisguth.fr)
