@@ -97,8 +97,7 @@ function main(robot){
 				case /(rm)|(delete)|(remove)/.test(res.match[1]):
 					_deleteAddr(res);
 					break;
-				case res.match[1] == "search":
-				//case res.match[1] == "s":
+				case /(^search)|(^s)/.test(res.match[1]):
 					_searchOnPokemonWiki(res);
 					break;
 				case res.match[1] == "list":
