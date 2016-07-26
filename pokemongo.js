@@ -343,7 +343,7 @@ function main(robot){
 	//Using wikis from Encyclopaediae Pokemonis http://www.encyclopaediae-pokemonis.org/
 	function _searchOnPokemonWiki(res){
 		var tmp = res.match[1].split("search");
-		var query = res.match[2].trim();
+		var query = tmp[1].trim();	
 		var user = res.message.user.name.toLowerCase();
 		hu.searchList(user, function(err,usr){
 			if(err){
