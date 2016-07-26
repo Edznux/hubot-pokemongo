@@ -1,5 +1,3 @@
-:+1: Plz upvote :+1:
-
 # hubot-pokemongo
 
 Hubot script for pokemon go.
