@@ -1,14 +1,15 @@
-:warning: *The site we're using for Pokemon live data is blocking visits outside of browsers. Working on a fix*
-
 # hubot-pokemongo
 
 Hubot script for pokemon go.
 hubot-pokemongo send you one private message every time one pokemon spawn near you.
-It support multiple location, mute notification, custom notification interval.
+It support multiple location, mute notification, custom notification interval, and some small features.
+
+:exclamation: *This does not require you to run your own bots for Pokémon localisation. However, the API we're querying is very instable and you might experience not-so-great service and unaccurate results.*
 
 ## dependency
 
 - hubot-redis-brain
+- geolib
 
 ## Commands available
 
