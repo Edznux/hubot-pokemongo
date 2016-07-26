@@ -98,7 +98,7 @@ function main(robot){
 					_deleteAddr(res);
 					break;
 				case res.match[1] == "search":
-				case res.match[1] == "s":
+				//case res.match[1] == "s":
 					_searchOnPokemonWiki(res);
 					break;
 				case res.match[1] == "list":
