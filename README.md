@@ -11,24 +11,26 @@ It support multiple location, mute notification, custom notification interval.
 
 ## Commands available
 
-- add <lat> <long> : Attach address to your user"
-- debug on : Enable debug"
-- debug off : Disable debug"
-- delete <lat> <long> : Delete address from your user"
-- id : Alias for number"
-- list : List addresses from the current user"
-- locale <en|fr|de> : Set locale for the current user"
-- notif on : Enable notification"
-- notif off : Disable notification"
-- number : Search for a Pokémon using it's Pokédex number"
-- nb : Alias for number"
-- preference : Show user preferences"
-- range <meters> : Set detection range to <meters>m"
-- remove <lat> <long> : Alias for delete"
-- rm <address> : Alias for delete"
-- timer <minutes> : Set timer interval to <minutes> minute(s)"
-- version : Print current version of hubot-pokemongo"
-- help : Print this help"
+- add <lat> <long> : Attach address to your user
+- debug on : Enable debug
+- debug off : Disable debug
+- delete <lat> <long> : Delete address from your user
+- list : List addresses from the current user
+- locale <en|fr|de> : Set locale for the current user
+- notif on : Enable notification
+- notif off : Disable notification
+- number <number> : Search for a Pokémon using it's Pokédex number
+- nb <number> : Alias for number
+- id <number> : Alias for number
+- preference : Show user preferences
+- range <meters> : Set detection range to <meters>m
+- remove <lat> <long> : Alias for delete
+- rm <address> : Alias for delete
+- search <query> : Searches on a Pokémon Wiki (depending on your locale)
+- s <query> : Alias for search
+- timer <minutes> : Set timer interval to <minutes> minute(s)
+- version : Print current version of hubot-pokemongo
+- help : Print this help
 - ? : Alias for help
 
 ## Examples
