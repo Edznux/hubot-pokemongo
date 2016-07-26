@@ -139,7 +139,7 @@ function main(robot){
 				" - remove <lat> <long> : Alias for delete",
 				" - rm <address> : Alias for delete",
 				" - search <query> : Searches on a Pokémon Wiki (depending on your locale)",
-				" - s <query> : Alias for search"
+				" - s <query> : Alias for search",
 				" - timer <minutes> : Set timer interval to <minutes> minute(s)",
 				" - version : Print current version of hubot-pokemongo",
 				" - help : Print this help",
