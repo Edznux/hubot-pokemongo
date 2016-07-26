@@ -58,43 +58,43 @@ function main(robot){
 
 			res.match[1] = res.match[1].trim();
 			switch(true){
-				case /add/.test(res.match[1]):
+				case /^add/.test(res.match[1]):
 					_addAddr(res);
 					break;
-				case /preferences?\b/.test(res.match[1]):
+				case /^preferences?\b/.test(res.match[1]):
 					_showPreferencesByUser(res);
 					break;
-				case /locales?\b/.test(res.match[1]):
+				case /^locales?\b/.test(res.match[1]):
 					_setLocaleToUser(res);
 					break;
-				case /range/.test(res.match[1]):
+				case /^range/.test(res.match[1]):
 					_addRangeToUser(res);
 					break;
-				case /notif on/.test(res.match[1]):
+				case res.match[1] == "notif on":
 					_enableNotifToUser(res);
 					break;
-				case /notif off/.test(res.match[1]):
+				case res.match[1] == "notif off":
 					_disableNotifToUser(res);
 					break;
-				case /debug on/.test(res.match[1]):
+				case res.match[1] == "debug on":
 					_enableDebugToUser(res);
 					break;
-				case /debug off/.test(res.match[1]):
+				case res.match[1] == "debug off":
 					_disableDebugToUser(res);
 					break;
-				case /id/.test(res.match[1]):
+				case /^id/.test(res.match[1]):
 					_getPokemonById(res);
 					break;
-				case /nb/.test(res.match[1]):
+				case /^nb/.test(res.match[1]):
 					_getPokemonById(res);
 					break;
-				case /number/.test(res.match[1]):
+				case /^number/.test(res.match[1]):
 					_getPokemonById(res);
 					break;
-				case /timer/.test(res.match[1]):
+				case /^timer/.test(res.match[1]):
 					_setTimerToUser(res);
 					break;
-				case /(rm)|(delete)|(remove)/.test(res.match[1]):
+				case /(^rm)|(^delete)|(^remove)/.test(res.match[1]):
 					_deleteAddr(res);
 					break;
 				case /(^search)|(^s)/.test(res.match[1]):
