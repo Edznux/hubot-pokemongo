@@ -342,16 +342,15 @@ function main(robot){
 	
 	//Using wikis from Encyclopaediae Pokemonis http://www.encyclopaediae-pokemonis.org/
 	function _searchOnPokemonWiki(res){
-		var tmp = res.match[1].split("search");
-		var query = tmp[1].trim();	
+		var tmp = res.match[1].split(/(^pogo search )|(^pogo s )/);
+		var query = encodeURIComponent(tmp[0].trim());
 		var user = res.message.user.name.toLowerCase();
 		hu.searchList(user, function(err,usr){
 			if(err){
 				res.send(err)
 			}
 			var wiki = pu.getWiki(usr.locale);
-			console.log("Searching on " + wiki.name + ", in " + wiki.language + ".\n" + wiki.searchurl + query + "\n_Not your language? Use pogo locale to change it!_");
-			res.send("Searching on " + wiki.name + ", in " + wiki.language + ".\n" + wiki.searchurl + query + "\n_Not your language? Use pogo locale to change it!_")
+			res.send("Searching on " + wiki.name + ", in " + wiki.language + ".\n" + wiki.searchurl + query + "\n_Not your language? Use `pogo locale` to change it!_")
 		});
 	}
 	
