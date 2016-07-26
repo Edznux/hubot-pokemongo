@@ -12,17 +12,19 @@
 //   pogo debug on : Enable debug",
 //   pogo debug off : Disable debug",
 //   pogo delete <lat> <long> : Delete address from your user",
-//   pogo id : Alias for number",
 //   pogo list : List addresses from the current user",
 //   pogo locale <en|fr|de> : Set locale for the current user",
 //   pogo notif on : Enable notification",
 //   pogo notif off : Disable notification",
-//   pogo number : Search for a Pokémon using it's Pokédex number",
-//   pogo nb : Alias for number",
+//   pogo number <number> : Search for a Pokémon using it's Pokédex number",
+//   pogo nb <number> : Alias for number",
+//   pogo id <number> : Alias for number",
 //   pogo preference : Show user preferences",
 //   pogo range <meters> : Set detection range to <meters>m",
 //   pogo remove <lat> <long> : Alias for delete",
 //   pogo rm <address> : Alias for delete",
+//   pogo search <query> : Searches on a Pokémon Wiki (depending on your locale)",
+//   pogo s <query> : Alias for search",
 //   pogo timer <minutes> : Set timer interval to <minutes> minute(s)",
 //   pogo version : Print current version of hubot-pokemongo",
 //   pogo help : Print this help",
@@ -95,6 +97,9 @@ function main(robot){
 				case /(rm)|(delete)|(remove)/.test(res.match[1]):
 					_deleteAddr(res);
 					break;
+				case /(search)|(s)/.test(res.match[1]):
+					_searchOnPokemonWiki(res);
+					break;
 				case res.match[1] == "list":
 					_getList(res);
 					break;
@@ -122,17 +127,19 @@ function main(robot){
 				" - debug on : Enable debug",
 				" - debug off : Disable debug",
 				" - delete <lat> <long> : Delete address from your user",
-				" - id : Alias for number",
 				" - list : List addresses from the current user",
 				" - locale <en|fr|de> : Set locale for the current user",
 				" - notif on : Enable notification",
 				" - notif off : Disable notification",
-				" - number : Search for a Pokémon using it's Pokédex number",
-				" - nb : Alias for number",
+				" - number <number>  : Search for a Pokémon using it's Pokédex number",
+				" - nb <number> : Alias for number",
+				" - id <number>  : Alias for number",
 				" - preference : Show user preferences",
 				" - range <meters> : Set detection range to <meters>m",
 				" - remove <lat> <long> : Alias for delete",
 				" - rm <address> : Alias for delete",
+				" - search <query> : Searches on a Pokémon Wiki (depending on your locale)",
+				" - s <query> : Alias for search"
 				" - timer <minutes> : Set timer interval to <minutes> minute(s)",
 				" - version : Print current version of hubot-pokemongo",
 				" - help : Print this help",
@@ -282,14 +289,20 @@ function main(robot){
 		var user = res.message.user.name.toLowerCase();
 		var tmp = res.match[1].split(" ");
 		var locale = tmp[1];
+		
+		if(locale){
+			hu.setLocaleToUser(locale, user, function(err, data){
+				if(err){
+					res.send(err);
+				}else{
+					res.send(data);
+				}
+			});
+		}else{
+			res.send("Please enter a paramater! pogo locale <en|fr|de>")
+		}
 
-		hu.setLocaleToUser(locale, user, function(err, data){
-			if(err){
-				res.send(err);
-			}else{
-				res.send(data);
-			}
-		});
+		
 	}
 
 	function _showPreferencesByUser(res){
@@ -314,10 +327,30 @@ function main(robot){
 			}
 			var pokename = pu.getPokemonById(id, usr.locale);
 			if(pokename){
-				res.send(pokename + "\nhttp://pokeapi.co/media/sprites/pokemon/" + id + ".png");
+				var spriteurl = "http://inva.fr/hubot-pogo/" + id;
+				if(id < 152){
+					spriteurl += ".png";
+				}else{
+					spriteurl += ".gif";
+				}
+				res.send(pokename + "\n" + spriteurl);
 			}else{
 				res.send(id + " can't be found! The Pokédex goes from #1 to #721.");
 			}
+		});
+	}
+	
+	//Using wikis from Encyclopaediae Pokemonis http://www.encyclopaediae-pokemonis.org/
+	function _searchOnPokemonWiki(res){
+		var tmp = res.match[1].split("search");
+		var query = encodeURIComponent(res.match[2].trim());
+		var user = res.message.user.name.toLowerCase();
+		hu.searchList(user, function(err,usr){
+			if(err){
+				res.send(err)
+			}
+			var wiki = pu.getWiki(usr.locale);
+			res.send("Searching on " + wiki.name + ", in " + wiki.language + ".\n" + wiki.searchurl + query + "\n_Not your language? Use pogo locale to change it!_")
 		});
 	}
 	
