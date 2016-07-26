@@ -350,6 +350,7 @@ function main(robot){
 				res.send(err)
 			}
 			var wiki = pu.getWiki(usr.locale);
+			console.log("Searching on " + wiki.name + ", in " + wiki.language + ".\n" + wiki.searchurl + query + "\n_Not your language? Use pogo locale to change it!_");
 			res.send("Searching on " + wiki.name + ", in " + wiki.language + ".\n" + wiki.searchurl + query + "\n_Not your language? Use pogo locale to change it!_")
 		});
 	}
