@@ -2,7 +2,7 @@
 
 Hubot script for pokemon go.
 hubot-pokemongo send you one private message every time one pokemon spawn near you.
-It support multiple location, mute notification, custom notification interval.
+It supports multiple location, mute notification, custom notification interval.
 
 ## dependency
 
