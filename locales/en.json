@@ -727,5 +727,10 @@
 		"searchurl": "http://bulbapedia.bulbagarden.net/w/index.php?title=Special:Search&search=",
 		"language": "English"
 	},
-	"dialogs": {}
+	"dialogs": {
+		"preferences_header":"Preferences for user :",
+		"in_range":"is in range !",
+		"despawn_in":"It will despawn in :",
+		"no_pokemon_found":"No Pokemon found in",
+	}
 }

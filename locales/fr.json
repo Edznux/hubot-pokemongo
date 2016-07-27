@@ -727,5 +727,10 @@
 		"searchurl": "http://www.pokepedia.fr/index.php?title=Sp%C3%A9cial:Recherche&search=",
 		"language": "French"
 	},
-	"dialogs": {}
+	"dialogs": {
+		"preferences_header":"Préférences pour l'utilisateur:",
+		"in_range":"est à porté",
+		"despawn_in":"Disparaitra dans :",
+		"no_pokemon_found":"Aucun pokemon trouvé dans un périmètre de"
+	}
 }
