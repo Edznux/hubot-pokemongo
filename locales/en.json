@@ -731,6 +731,7 @@
 		"preferences_header":"Preferences for user :",
 		"in_range":"is in range !",
 		"despawn_in":"It will despawn in :",
-		"no_pokemon_found":"No Pokemon found in"
+		"no_pokemon_found":"No Pokemon found in",
+		"not_number":"is not a number"
 	}
 }
