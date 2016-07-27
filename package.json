@@ -1,6 +1,6 @@
 {
   "name": "hubot-pokemongo",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Hubot script for pokemon go.",
   "main": "pokemongo.js",
   "scripts": {
