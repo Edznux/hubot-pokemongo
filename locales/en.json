@@ -732,6 +732,7 @@
 		"in_range":"is in range !",
 		"despawn_in":"It will despawn in :",
 		"no_pokemon_found":"No Pokemon found in",
-		"not_number":"is not a number"
+		"not_number":"is not a number",
+		"no_addr":"No address found"
 	}
 }

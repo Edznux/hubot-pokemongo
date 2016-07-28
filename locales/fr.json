@@ -732,6 +732,7 @@
 		"in_range":"est à porté !",
 		"despawn_in":"Disparaîtra dans :",
 		"no_pokemon_found":"Aucun pokemon trouvé dans un périmètre de",
-		"not_number":"n'est pas un nombre"
+		"not_number":"n'est pas un nombre",
+		"no_addr":"Aucune addresse n'à été trouvé !"
 	}
 }
