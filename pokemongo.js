@@ -48,78 +48,92 @@ function main(robot){
 
 	setInterval(function(){
 		pu.alertNearby();
-		//scan addr evry minutes
+		//scan addr every minutes
 		pu.newScan();
 	}, DEFAULT_INTERVAL)
 
-
-	robot.hear(/(?:pogo)( .*)?/i, function(res){
-		if(res.message.rawText.match(/^(?:pogo)/i)){
-
-			res.match[1] = res.match[1].trim();
-			switch(true){
-				case /^add/.test(res.match[1]):
-					_addAddr(res);
-					break;
-				case /^preferences?\b/.test(res.match[1]):
-					_showPreferencesByUser(res);
-					break;
-				case /^locales?\b/.test(res.match[1]):
-					_setLocaleToUser(res);
-					break;
-				case /^range/.test(res.match[1]):
-					_addRangeToUser(res);
-					break;
-				case res.match[1] == "notif on":
-					_enableNotifToUser(res);
-					break;
-				case res.match[1] == "notif off":
-					_disableNotifToUser(res);
-					break;
-				case res.match[1] == "debug on":
-					_enableDebugToUser(res);
-					break;
-				case res.match[1] == "debug off":
-					_disableDebugToUser(res);
-					break;
-				case /^id/.test(res.match[1]):
-					_getPokemonById(res);
-					break;
-				case /^nb/.test(res.match[1]):
-					_getPokemonById(res);
-					break;
-				case /^number/.test(res.match[1]):
-					_getPokemonById(res);
-					break;
-				case /^timer/.test(res.match[1]):
-					_setTimerToUser(res);
-					break;
-				case /(^rm)|(^delete)|(^remove)/.test(res.match[1]):
-					_deleteAddr(res);
-					break;
-				case /(^search)|(^s)/.test(res.match[1]):
-					_searchOnPokemonWiki(res);
-					break;
-				case res.match[1] == "list":
-					_getList(res);
-					break;
-				case res.match[1] == "version":
-						res.send(require("./package.json").version);
-					break;
-				case res.match[1] == "forceupdate":
-						pu.alertNearby();
-					break;
-				case res.match[1] == "?":
-				case res.match[1] == "help":
-					res.send(getHelp());
-					break;
-				default:
-					res.send(getHelp());
-					break;
-			}
+	// handle private and public messages...
+	// public messages looks like "pogo <commands>"
+	// private messages looks like "hubot pogo <commands>"
+	var regexpHear = new RegExp("(?:pogo)( .*)?","i");
+	var regexpRespond = new RegExp("(?:"+robot.name+" pogo)( .*)?","i");
+	
+	robot.hear(regexpHear, function(res){
+		if(robot.name !== res.message.user.name){
+			route(res);
 		}
 	});
+	
 
+	function route(res){
+		res.match[1] = res.match[1].trim();
+		switch(true){
+			case /^add/.test(res.match[1]):
+				_addAddr(res);
+				break;
+			case /^preferences?\b/.test(res.match[1]):
+				_showPreferencesByUser(res);
+				break;
+			case /^locales?\b/.test(res.match[1]):
+				_setLocaleToUser(res);
+				break;
+			case /^range/.test(res.match[1]):
+				_addRangeToUser(res);
+				break;
+			case res.match[1] == "map on":
+				_enableMapToUser(res);
+				break;
+			case res.match[1] == "map off":
+				_disableMapToUser(res);
+				break;
+			case res.match[1] == "notif on":
+				_enableNotifToUser(res);
+				break;
+			case res.match[1] == "notif off":
+				_disableNotifToUser(res);
+				break;
+			case res.match[1] == "debug on":
+				_enableDebugToUser(res);
+				break;
+			case res.match[1] == "debug off":
+				_disableDebugToUser(res);
+				break;
+			case /^id/.test(res.match[1]):
+				_getPokemonById(res);
+				break;
+			case /^nb/.test(res.match[1]):
+				_getPokemonById(res);
+				break;
+			case /^number/.test(res.match[1]):
+				_getPokemonById(res);
+				break;
+			case /^timer/.test(res.match[1]):
+				_setTimerToUser(res);
+				break;
+			case /(^rm)|(^delete)|(^remove)/.test(res.match[1]):
+				_deleteAddr(res);
+				break;
+			case /(^search)|(^s)/.test(res.match[1]):
+				_searchOnPokemonWiki(res);
+				break;
+			case res.match[1] == "list":
+				_getList(res);
+				break;
+			case res.match[1] == "version":
+					res.send(require("./package.json").version);
+				break;
+			case res.match[1] == "forceupdate":
+					pu.alertNearby();
+				break;
+			case res.match[1] == "?":
+			case res.match[1] == "help":
+				res.send(getHelp());
+				break;
+			default:
+				res.send(getHelp());
+				break;
+		}
+	}
 	function getHelp(){
 		return [
 			"pogo commands",
@@ -184,10 +198,14 @@ function main(robot){
 	}
 
 	function _addAddr(res){
-		var user = res.message.user.name.toLowerCase();
+
+		var user = {}
+		user.name = res.message.user.name.toLowerCase();
+		user.id = res.message.user.id;
+
 		var tmp = res.match[1].split(" ");
 		var lat = tmp[1];
-		var long = tmp[2];
+		var long = tmp[2];	
 		console.log("Add address :", tmp[1], "to user :", user, "[", new Date(), "]");
 
 		if(lat === undefined || long === undefined){
@@ -345,6 +363,7 @@ function main(robot){
 		var tmp = res.match[1].split(/(^pogo search )|(^pogo s )/);
 		var query = encodeURIComponent(tmp[0].split(" ")[1].trim());
 		var user = res.message.user.name.toLowerCase();
+		console.log(res.message);
 		hu.searchList(user, function(err,usr){
 			if(err){
 				res.send(err)
@@ -353,7 +372,30 @@ function main(robot){
 			res.send("Searching on " + wiki.name + ", in " + wiki.language + ".\n" + wiki.searchurl + query + "\n_Not your language? Use `pogo locale` to change it!_")
 		});
 	}
-	
+
+	function _enableMapToUser(res){
+		var user = res.message.user.name.toLowerCase();
+
+		hu.enableMapToUser(user, function(err, data){
+			if(err){
+				res.send(err);
+			}else{
+				res.send(data);
+			}
+		});
+	}
+
+	function _disableMapToUser(res){
+		var user = res.message.user.name.toLowerCase();
+
+		hu.enableMapToUser(user, function(err, data){
+			if(err){
+				res.send(err);
+			}else{
+				res.send(data);
+			}
+		});
+	}
 }
 
 module.exports = main;
