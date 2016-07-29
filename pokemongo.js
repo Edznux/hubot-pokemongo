@@ -154,6 +154,8 @@ function main(robot){
 				" - rm <address> : Alias for delete",
 				" - search <query> : Searches on a Pokémon Wiki (depending on your locale)",
 				" - s <query> : Alias for search",
+				" - map on : Enable map output",
+				" - map off : Disable map output",
 				" - timer <minutes> : Set timer interval to <minutes> minute(s)",
 				" - version : Print current version of hubot-pokemongo",
 				" - help : Print this help",
