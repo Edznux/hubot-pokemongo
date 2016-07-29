@@ -60,7 +60,6 @@ function main(robot){
 	
 	robot.hear(regexpHear, function(res){
 		if(robot.name !== res.message.user.name){
-			console.log(res)
 			route(res);
 		}
 	});
@@ -80,6 +79,12 @@ function main(robot){
 				break;
 			case /^range/.test(res.match[1]):
 				_addRangeToUser(res);
+				break;
+			case res.match[1] == "map on":
+				_enableMapToUser(res);
+				break;
+			case res.match[1] == "map off":
+				_disableMapToUser(res);
 				break;
 			case res.match[1] == "notif on":
 				_enableNotifToUser(res);
@@ -367,7 +372,30 @@ function main(robot){
 			res.send("Searching on " + wiki.name + ", in " + wiki.language + ".\n" + wiki.searchurl + query + "\n_Not your language? Use `pogo locale` to change it!_")
 		});
 	}
-	
+
+	function _enableMapToUser(res){
+		var user = res.message.user.name.toLowerCase();
+
+		hu.enableMapToUser(user, function(err, data){
+			if(err){
+				res.send(err);
+			}else{
+				res.send(data);
+			}
+		});
+	}
+
+	function _disableMapToUser(res){
+		var user = res.message.user.name.toLowerCase();
+
+		hu.enableMapToUser(user, function(err, data){
+			if(err){
+				res.send(err);
+			}else{
+				res.send(data);
+			}
+		});
+	}
 }
 
 module.exports = main;
