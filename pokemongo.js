@@ -14,6 +14,8 @@
 //   pogo delete <lat> <long> : Delete address from your user,
 //   pogo list : List addresses from the current user,
 //   pogo locale <en|fr|de> : Set locale for the current user,
+//   pogo map on : Enable map,
+//   pogo map off : Disable map,
 //   pogo notif on : Enable notification,
 //   pogo notif off : Disable notification,
 //   pogo number <number> : Search for a Pokémon using it's Pokédex number,
