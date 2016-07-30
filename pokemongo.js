@@ -14,6 +14,7 @@
 //   pogo delete <lat> <long> : Delete address from your user,
 //   pogo list : List addresses from the current user,
 //   pogo locale <en|fr|de> : Set locale for the current user,
+//   pogo map size <x> <y>: Change size of the map,
 //   pogo map on : Enable map,
 //   pogo map off : Disable map,
 //   pogo notif on : Enable notification,
@@ -82,6 +83,9 @@ function main(robot){
 			case /^range/.test(res.match[1]):
 				_addRangeToUser(res);
 				break;
+			case /^map size/.test(res.match[1]):
+				_setMapSizeToUser(res);
+				break;
 			case res.match[1] == "map on":
 				_enableMapToUser(res);
 				break;
@@ -145,6 +149,9 @@ function main(robot){
 				" - delete <lat> <long> : Delete address from your user",
 				" - list : List addresses from the current user",
 				" - locale <en|fr|de> : Set locale for the current user",
+				" - map size <x> <y>: Change size of the map",
+				" - map on : Enable map",
+				" - map off : Disable map",
 				" - notif on : Enable notification",
 				" - notif off : Disable notification",
 				" - number <number>  : Search for a Pokémon using it's Pokédex number",
@@ -399,6 +406,24 @@ function main(robot){
 				res.send(data);
 			}
 		});
+	}
+	function _setMapSizeToUser(res){
+		var user = res.message.user.name.toLowerCase();
+		var tmp = res.match[1].split(" ");
+		var x = tmp[1];
+		var y = tmp[2];
+		
+		if(x && y){
+			hu.setMapSizeToUser(x, y, user, function(err, data){
+				if(err){
+					res.send(err);
+				}else{
+					res.send(data);
+				}
+			});
+		}else{
+			res.send("Please enter a X a Y parameters (width and height)")
+		}
 	}
 }
 
