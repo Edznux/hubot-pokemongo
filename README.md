@@ -1,3 +1,7 @@
+:warning: **As of today (31/08), Pokevision is down for un undefined amount of time.** We will provide a replacement of their private API which we were relying on, but we do not have any timeframe.
+
+*If you have a working/work in progress replacement proposition feel free to open an issue and discuss it.*
+
 # hubot-pokemongo
 
 Hubot script for pokemon go.
